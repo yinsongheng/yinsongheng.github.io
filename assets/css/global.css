@@ -5,6 +5,21 @@ body {
     padding-top: 5.0rem;
 }
 
+/* One-page navigation: smooth-scroll to anchors and offset for the fixed navbar
+   so section headings aren't hidden underneath it when jumping via the tabs. */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+}
+
+a {
+    color: #296cc4;
+}
+a:hover,
+a:focus {
+    color: #14345f;
+}
+
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
     font-weight: 700;
@@ -55,6 +70,15 @@ h1, h2, h3, h4, h5, h6,
     line-break: unset;
 }
 
+/* Small inline images (emoji / stickers) that flow within a line of text.
+   Scales with the surrounding font size. Drop images in assets/images/emoji/. */
+.inline-emoji {
+    height: 1.3em;
+    width: auto;
+    vertical-align: -0.28em;
+    margin: 0 0.1em;
+}
+
 .no-break {
     white-space: nowrap;
 }
@@ -89,5 +113,6 @@ div.lazy {
 }
 
 .email-text {
-    font-family: Source Code Pro, monospace;
+    font-family: "Lato", sans-serif;   /* was Source Code Pro monospace (too wide, wrapped) */
+    white-space: nowrap;               /* keep the address on one line */
 }

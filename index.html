@@ -1,39 +1,103 @@
 ---
 layout: default
-title : Homepage
+title: Homepage
 navbar_title: Home
 ---
 
-<div class="row">
-    <div class="col-lg-3 col-md-4">
-        {% include widgets/profile_card_mini.html %}
+{% comment %}
+  One-page layout. Each top-level <section> below has an id that the navbar
+  links to (see _data/navigation.yml). Clicking a navbar tab scrolls to the
+  matching section on this page instead of loading a separate page.
+{% endcomment %}
+
+<!-- ===== Home / About ===== -->
+<section id="home">
+    <div class="row">
+        <div class="col-lg-3 col-md-4">
+            {% include widgets/profile_card_mini.html %}
+        </div>
+        <div class="col-lg-9 col-md-8">
+
+            {% include widgets/profile_card_bio_only.html %}
+
+            <!-- Debugging widgets (auto-hide once repo name & baseurl are correct) -->
+            {% include widgets/debug_repo_name.html %}
+            {% include widgets/debug_url.html %}
+
+            {% if site.data.display.homepage.show_experience %}
+                {% include widgets/experience_card.html %}
+            {% endif %}
+
+            {% if site.data.display.homepage.show_news %}
+            {% assign count_news = site.news | size %}
+            {% if count_news > 0 %}
+                {% include widgets/news_card.html limit=site.data.display.homepage.num_news %}
+            {% endif %}
+            {% endif %}
+        </div>
     </div>
-    <div class="col-lg-9 col-md-8">
+</section>
 
-        {% include widgets/profile_card_bio_only.html %}
-
-        <!-- Debugging widgets -->
-        {% include widgets/debug_repo_name.html %}
-        {% include widgets/debug_url.html %}
-
-        {% if site.data.display.homepage.show_experience %}
-            {% include widgets/experience_card.html %}
-        {% endif %}
-
-        {% if site.data.display.homepage.show_news %}
-        {% assign count_news = site.news | size %}
-        {% if count_news > 0 %}
-        {% include widgets/news_card.html limit=site.data.display.homepage.num_news %}
-        {% endif %}
-        {% endif %}
-
-        {% if site.data.display.homepage.show_selected_publications %}
-        {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
-        {%
-        include widgets/publication_card.html
-        publications=pubs
-        title='<i class="fas fa-star"></i> Selected Publications'
-        %}
-        {% endif %}
+<!-- ===== Publications ===== -->
+{% assign pubs_by_year = site.publications | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
+{% if pubs_by_year.size > 0 %}
+<section id="publications">
+    <h1 class="pt-5 pb-2 mb-4 border-bottom">Publications</h1>
+    {% for year in pubs_by_year %}
+    <h2 class="pt-3">{{ year.name }}</h2>
+    <div class="my-0 p-0 bg-white shadow-sm rounded-xl">
+        {% for item in year.items %}
+            {% include widgets/publication_item.html item=item hide_bottom_border=forloop.last first=forloop.first last=forloop.last %}
+        {% endfor %}
     </div>
-</div>
+    {% endfor %}
+</section>
+{% endif %}
+
+<!-- ===== Blog ===== -->
+{% assign blogs_by_year = site.posts | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
+{% if blogs_by_year.size > 0 %}
+<!-- <section id="blog">
+    <h1 class="pt-5 pb-2 mb-4 border-bottom">Blog</h1>
+    {% for year in blogs_by_year %}
+    <h2 class="pt-3">{{ year.name }}</h2>
+    <div class="my-0 p-0 bg-white shadow-sm rounded-xl">
+        {% for item in year.items %}
+            {% include widgets/blog_card.html item=item hide_bottom_border=forloop.last first=forloop.first last=forloop.last %}
+        {% endfor %}
+    </div>
+    {% endfor %}
+</section> -->
+{% endif %}
+
+<!-- ===== Showcase ===== -->
+{% assign cards_by_group = site.showcase | sort: "date" | reverse | where: "show", true | group_by_exp: "item", "item.group" %}
+{% comment %} Showcase hidden — change `false` back to `cards_by_group.size > 0` to re-enable {% endcomment %}
+{% if false %}
+<section id="showcase">
+    <h1 class="pt-5 pb-2 mb-4 border-bottom">Showcase</h1>
+    {% for group in cards_by_group %}
+    <h2 class="pt-3">{{ group.name }}</h2>
+    <div class="row grid mb-4">
+        <div class="grid-sizer col-1"></div>
+        {% for item in group.items %}
+        {% if item.width >= 6 -%}
+            {%- assign width_sm = 12 -%}
+            {%- assign width_xs = 12 -%}
+        {%- elsif item.width >= 2 -%}
+            {%- assign width_sm = 6 -%}
+            {%- assign width_xs = 6 -%}
+        {%- else -%}
+            {%- assign width_sm = item.width | times: 2 | at_most: 12 -%}
+            {%- assign width_xs = item.width | times: 2 | at_most: 12 -%}
+        {%- endif -%}
+        <div class="p-2 grid-item col-md-{{ item.width | at_most: 12 }} col-sm-{{ width_sm }} col-{{ width_xs }}">
+            <div class="{% if item.class != null %}{{ item.class }}{% else %}card border-0 shadow-sm bg-white{% endif %}">
+                {{ item.content }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</section>
+{% endif %}

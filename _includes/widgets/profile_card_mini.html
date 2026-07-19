@@ -21,8 +21,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col text-center h4">
+                    <div class="col text-center h4 mb-1">
                         {{ site.data.profile.primary_name }}
+                        {% if site.data.profile.secondary_name %}
+                        <div class="small text-muted no-break">{{ site.data.profile.secondary_name }}</div>
+                        {% endif %}
                     </div>
                 </div>
 
@@ -44,6 +47,12 @@
 
                 <div class="row pt-2">
                     <div class="col text-center h4">
+                        {% if site.data.profile.dblp %}
+                        <a class="px-1 no-break" target="_blank" href="{{ site.data.profile.dblp }}">
+                            <i class="ai ai-dblp"></i>
+                        </a>
+                        {% endif %}
+
                         {% if site.data.profile.gscholar %}
                         {%- if site.data.profile.gscholar contains 'scholar.google' -%}
                         {%- assign gscholar_url = site.data.profile.gscholar -%}
@@ -61,6 +70,12 @@
                         </a>
                         {% endif %}
 
+                        {% if site.data.profile.linkedin %}
+                        <a class="px-1 no-break" target="_blank" href="https://www.linkedin.com/in/{{ site.data.profile.linkedin }}">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        {% endif %}
+
                         {% if site.data.profile.wechat_qrcode %}
                         <a class="px-1 no-break" data-toggle="modal" data-target="#modal-wechat">
                             <i class="fab fa-weixin"></i>
@@ -70,12 +85,6 @@
                         {% if site.data.profile.twitter %}
                         <a class="px-1 no-break" target="_blank" href="https://twitter.com/{{ site.data.profile.twitter }}">
                             <i class="fab fa-twitter"></i>
-                        </a>
-                        {% endif %}
-
-                        {% if site.data.profile.linkedin %}
-                        <a class="px-1 no-break" target="_blank" href="https://www.linkedin.com/in/{{ site.data.profile.linkedin }}">
-                            <i class="fab fa-linkedin"></i>
                         </a>
                         {% endif %}
 

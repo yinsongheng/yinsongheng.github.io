@@ -1,50 +1,54 @@
-primary_name: "Your Name"
+primary_name: "Songheng Yin"
 secondary_name: ""
-navbar_name: "Your Name"
+navbar_name: "Songheng Yin (殷 崧珩)"
 
 positions:
-- name: Title or Position
-- name: Affiliation Name
+- name: Robotics System Engineer
+- name: Mujin, Inc
   logo: /assets/images/badges/MIT_Social_circle.png  # Logo is optional
 
 
-email: "your@email.com"
+email: "songheng.yin@columbia.edu"
 # cv_link: link-to-your-cv-file
-gscholar: xFmQpf4AAAAJ  # This is an example, replace it with your own Google Scholar ID
-github: your_github_id
-twitter: your_twitter_id  # Do not include the '@' symbol
+# gscholar: xFmQpf4AAAAJ  # Google Scholar hidden for now — uncomment to show the icon again
+dblp: https://dblp.org/pid/330/0028.html
+github: ReinaKousaka
+twitter: zha_bu_duo_deLe  # Do not include the '@' symbol
 # wechat_qrcode: /assets/images/etc/wechat.jpg
 # wechat_prompt: >-
 #   Please tell me your <strong>name</strong> and <strong>affiliation</strong> (current or past) when adding my wechat. Thanks!
-# linkedin: your-linked-in-id
+linkedin: songheng-yin
 # orcid: 0000-0000-0000-0000
 
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    A <a href="https://en.wikipedia.org/wiki/Bicolor_cat" target="_blank">bicolor cat</a> is a cat with white fur combined with fur of some other colour, for example solid black, tabby, or colourpointed.
+    I am a robotics engineer at <a target="_blank" href="https://mujin-corp.com/">Mujin</a>@Tokyo, working broadly on computer vision, artificial intelligence, and robotics. I am now also looking for PhD opportunities starting in 2027 or 2028.
   </p>
   <p>
-    There are various patterns of a bicolour cat. These range from the Van-patterned (colour on the crown of the head 
-    and the tail only) to a solid colour with a throat locket or medallion. Bicolour coats are found in many cat breeds, 
-    as well as being common in domestic longhair and domestic shorthair cats.
+    During my undergrad, I was a research student at <a target="_blank" href="https://www.pair.toronto.edu/">Pair Lab</a>@<a target="_blank" href="https://www.cc.gatech.edu/">Georgia Tech</a>, advised by <a target="_blank" href="https://animesh.garg.tech/">Prof. Animesh Garg</a>. I feel lucky to have worked with him and <a target="_blank" href="https://gnosisyuw.github.io/">Dr. Wei Yu</a>.
   </p>
-
+  <p>
+    Earlier, I interned at Amazon@Seattle and SMBC@NYC, and worked at Tencent@Beijing as a backend infrastructure engineer.
+  </p>
+  <p>
+    I am from Nanjing, and have lived in Toronto, Vancouver, New York, Beijing, and now Tokyo. In my free time, I enjoy landscape photography and learning languages. I always love meeting new people and finding ways to work together — feel free to reach out~
+  </p>
 portrait_url: /assets/images/photos/portrait.jpg
 portrait_caption: >-
   Photo by Manja Vitolic on Unsplash (this caption is optional, comment it out to disable).
 
 education:
-- name: Massachusetts Institute of Technology
-  logo: /assets/images/badges/MIT_Social_circle.png
+- name: Columbia University
+  logo: /assets/images/badges/Columbia.png
   position: >- 
-    Department of Electrical Engineering and Computer Science <br/>
-    Ph.D. Student
-  date: Sep. 2024 - present
-- name: Peking University
-  logo: /assets/images/badges/PKU_red.png
-  position: B.S. in Computer Science
-  date: Sep. 2019 - Jul. 2021
+    M.Sc. in Computer Science <br/>
+  date: 2022 - 2024
+- name: University of Toronto
+  logo: /assets/images/badges/UToronto.png
+  position: >-
+    B.Sc. in Computer Science <br/>
+  date: 2018 - 2022
 
 # experience:
 # - name: Peking University
@@ -52,10 +56,10 @@ education:
 #   position: Research Intern
 #   date: Sep. 2019 - Jul. 2021
 
-awards:
-- name: Award Name 2
-  date: 2024
-- name: Award Name 1 
-  date: 2021
-- name: A quick brown fox jumps over the lazy dog and runs away award
-  date: 2021
+# awards:
+# - name: Award Name 2
+#   date: 2024
+# - name: Award Name 1 
+#   date: 2021
+# - name: A quick brown fox jumps over the lazy dog and runs away award
+#   date: 2021

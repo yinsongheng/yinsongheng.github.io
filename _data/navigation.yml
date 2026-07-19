@@ -1,13 +1,14 @@
 pages:
-# NOTE: `name` field must match the `navbar_title` field in the page's front matter to ensure the correct page is highlighted in the navbar.
-#       For example, the `navbar_title` field in `showcase.html` is "Showcase" and the `name` field here should also be "Showcase"
+# One-page layout: `url` values are in-page anchors that jump to the matching
+# <section id="..."> on the homepage (index.html) instead of loading a new page.
+# NOTE: `name` must match the section id (lowercased) so the navbar highlights
+#       the section currently in view. Home -> #home, Publications -> #publications, etc.
 - name: Home
-  url: /
-- name: Home (Layout 2)
-  url: /index_layout2
+  url: /#home
 - name: Publications
-  url: /publications
-- name: Blog
-  url: /blog
-- name: Showcase
-  url: /showcase
+  url: /#publications
+# Blog and Showcase sections are hidden — re-enable them in index.html and uncomment here.
+# - name: Blog
+#   url: /#blog
+# - name: Showcase
+#   url: /#showcase

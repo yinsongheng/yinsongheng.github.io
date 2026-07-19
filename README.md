@@ -71,13 +71,42 @@ If you run into **any** issues while using this template, or have suggestions fo
 
 3. Clone your forked repository to your local machine.
 
-4. Run the following command in the root directory of the repository:
+4. Run the following command in the root directory of the repository to **start** the local server:
 
    ```bash
    bundle exec jekyll serve
    ```
 
-5. Browse to the displayed URL to see the website.
+   > If you get `bundle: command not found`, run `gem install bundler` once first.
+   > Add `--port 4001` if port 4000 is already in use, or `--livereload` to auto-refresh the browser.
+
+5. Open the displayed URL (by default <http://127.0.0.1:4000/>) to preview the site. Jekyll watches the folder and rebuilds automatically when you save a file — just refresh the browser. The one exception is `_config.yml`: stop and restart the server for changes to it to take effect.
+
+   > ⚠️ Do **not** use VS Code Live Server (or any plain static-file server) — it serves the raw template files and shows `{% ... %}` source instead of the built site. Only `jekyll serve` compiles the site the same way GitHub Pages does.
+
+6. To **stop** the server, press <kbd>Ctrl</kbd>+<kbd>C</kbd> in the terminal where it's running. If you started it in the background instead, stop it with:
+
+   ```bash
+   pkill -f "jekyll serve"
+   ```
+
+#### Previewing from another machine
+
+By default the server binds to `127.0.0.1` (localhost), which is only reachable *on the same machine*. To preview from a different device (e.g. this repo lives on a headless/remote Ubuntu box), bind to all interfaces with `--host 0.0.0.0`:
+
+```bash
+export GEM_HOME="$PWD/.gems" PATH="$PWD/.gems/bin:$PATH" && exec bundle exec jekyll serve --host 0.0.0.0 --port 4000
+```
+
+> The `export GEM_HOME=...` prefix is only needed if the gems were installed into a repo-local `.gems/` folder (as in this setup); with a normal system/user gem install, `bundle exec jekyll serve --host 0.0.0.0` is enough. The key part is `--host 0.0.0.0`.
+
+Then, from the other machine, browse to the host's IP on port 4000 — e.g. `http://<LAN-IP>:4000/`, or `http://<tailscale-IP>:4000/` if using Tailscale. Make sure the firewall allows port 4000.
+
+For an untrusted network, prefer an SSH tunnel instead of exposing the port — keep the default localhost bind and run this on the *remote* machine:
+
+```bash
+ssh -L 4000:localhost:4000 <user>@<host>   # then open http://localhost:4000/
+```
 
 
 ### Deploying to GitHub Pages
