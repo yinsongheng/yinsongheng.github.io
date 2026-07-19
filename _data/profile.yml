@@ -23,7 +23,7 @@ linkedin: songheng-yin
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    I am a robotics engineer at <a target="_blank" href="https://mujin-corp.com/">Mujin</a>@Tokyo, working broadly on computer vision, artificial intelligence, and robotics. I am now also looking for PhD opportunities starting in 2027 or 2028.
+    I am a robotics engineer at <a target="_blank" href="https://mujin-corp.com/">Mujin</a>@Tokyo. I am working broadly on computer vision, artificial intelligence, and robotics. I am now also looking for PhD opportunities starting in 2027 or 2028.
   </p>
   <p>
     During my undergrad, I was a research student at <a target="_blank" href="https://www.pair.toronto.edu/">Pair Lab</a>@<a target="_blank" href="https://www.cc.gatech.edu/">Georgia Tech</a>, advised by <a target="_blank" href="https://animesh.garg.tech/">Prof. Animesh Garg</a>. I feel lucky to have worked with him and <a target="_blank" href="https://gnosisyuw.github.io/">Dr. Wei Yu</a>.
@@ -34,9 +34,9 @@ short_bio: >-
   <p>
     I am from Nanjing, and have lived in Toronto, Vancouver, New York, Beijing, and now Tokyo. In my free time, I enjoy landscape photography and learning languages. I always love meeting new people and finding ways to work together — feel free to reach out~
   </p>
-portrait_url: /assets/images/photos/portrait.jpg
-portrait_caption: >-
-  Photo by Manja Vitolic on Unsplash (this caption is optional, comment it out to disable).
+portrait_url: /assets/images/photos/profile.jpg
+# portrait_caption: >-
+#   Photo by Manja Vitolic on Unsplash (this caption is optional, comment it out to disable).
 
 education:
 - name: Columbia University

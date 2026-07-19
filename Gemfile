@@ -22,6 +22,12 @@ group :jekyll_plugins do
   gem "jekyll-email-protect"
 end
 
+# Stdlib gems removed from Ruby 3.4+/4.0 defaults, required by Jekyll 3.x
+gem "base64"
+gem "csv"
+gem "logger"
+gem "bigdecimal"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 

@@ -39,17 +39,26 @@ navbar_title: Home
 </section>
 
 <!-- ===== Publications ===== -->
-{% assign pubs_by_year = site.publications | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
-{% if pubs_by_year.size > 0 %}
+{% comment %}
+  Publications are grouped by `category` (set in each pub's front matter),
+  not by year. Section order is fixed by the `pub_categories` list below;
+  add or rename categories here and only non-empty ones are shown.
+{% endcomment %}
+{% assign pub_categories = "Conferences,Preprint / Under Review" | split: "," %}
+{% assign all_pubs = site.publications | sort: "date" | reverse %}
+{% if all_pubs.size > 0 %}
 <section id="publications">
     <h1 class="pt-5 pb-2 mb-4 border-bottom">Publications</h1>
-    {% for year in pubs_by_year %}
-    <h2 class="pt-3">{{ year.name }}</h2>
+    {% for category in pub_categories %}
+    {% assign cat_pubs = all_pubs | where: "category", category %}
+    {% if cat_pubs.size > 0 %}
+    <h2 class="pt-3">{{ category }}</h2>
     <div class="my-0 p-0 bg-white shadow-sm rounded-xl">
-        {% for item in year.items %}
+        {% for item in cat_pubs %}
             {% include widgets/publication_item.html item=item hide_bottom_border=forloop.last first=forloop.first last=forloop.last %}
         {% endfor %}
     </div>
+    {% endif %}
     {% endfor %}
 </section>
 {% endif %}
