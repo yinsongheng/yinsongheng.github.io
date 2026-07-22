@@ -20,6 +20,7 @@ gem "jekyll", "~> 3.9"
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-email-protect"
+  gem "jekyll-sitemap"
 end
 
 # Stdlib gems removed from Ruby 3.4+/4.0 defaults, required by Jekyll 3.x
