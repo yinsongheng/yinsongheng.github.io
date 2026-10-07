@@ -4,18 +4,28 @@
             <div class="card-body px-4 pt-4 pb-3">
                 <div class="row">
                     <div class="col">
-                        {% if site.data.profile.portrait_url %}
-                        <!-- When the screen is wider than md, float the portrait on the right -->
+                        {% if site.data.profile.portrait_url and site.data.profile.photo_url %}
+                        <div class="profile-image-switcher mb-3"
+                             data-profile-name="{{ site.data.profile.primary_name | escape }}"
+                             data-photo-url="{{ site.data.profile.photo_url | relative_url }}"
+                             data-avatar-url="{{ site.data.profile.portrait_url | relative_url }}">
+                            <img src="{{ site.data.profile.portrait_url | relative_url }}"
+                                 class="profile-image"
+                                 alt="Chiikawa avatar">
+                            <button class="profile-image-toggle" type="button"
+                                    aria-label="Show personal photo"
+                                    title="Show personal photo">
+                                <i class="fas fa-camera-rotate" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        {% elsif site.data.profile.portrait_url %}
                         <div class="figure d-none d-md-block">
-                            <img 
-                                src="{{ site.data.profile.portrait_url | relative_url }}" 
-                                class="figure-img img-fluid" 
-                                data-toggle="tooltip" 
-                                data-placement="top" 
-                                title="{{ site.data.profile.portrait_caption }}">
+                            <img src="{{ site.data.profile.portrait_url | relative_url }}"
+                                 class="figure-img img-fluid"
+                                 alt="Portrait of {{ site.data.profile.primary_name }}">
                         </div>
                         <div class="mb-3 d-md-none text-center">
-                            <img src="{{ site.data.profile.portrait_url | relative_url }}" class="rounded-circle" style="max-width: 50%;" alt="Portrait">
+                            <img src="{{ site.data.profile.portrait_url | relative_url }}" class="rounded-circle" style="max-width: 50%;" alt="Portrait of {{ site.data.profile.primary_name }}">
                         </div>
                         {% endif %}
                     </div>

@@ -26,6 +26,29 @@ $(function () {
 
     $('[data-toggle="tooltip"]').tooltip()
 
+    // Switch between the personal photo and the illustrated profile avatar.
+    $('.profile-image-switcher').each(function () {
+        var $switcher = $(this);
+        var $image = $switcher.find('.profile-image');
+        var $button = $switcher.find('.profile-image-toggle');
+        var profileName = $switcher.data('profile-name');
+        var showingPhoto = false;
+
+        $button.on('click', function () {
+            showingPhoto = !showingPhoto;
+            var nextSrc = showingPhoto ? $switcher.data('photo-url') : $switcher.data('avatar-url');
+            var nextAlt = showingPhoto ? 'Photo of ' + profileName : 'Chiikawa avatar';
+            var nextLabel = showingPhoto ? 'Show Chiikawa avatar' : 'Show personal photo';
+
+            $image.addClass('is-switching');
+            window.setTimeout(function () {
+                $image.attr({ src: nextSrc, alt: nextAlt });
+                $button.attr({ 'aria-label': nextLabel, title: nextLabel });
+                $image.removeClass('is-switching');
+            }, 150);
+        });
+    });
+
     var $grid = $('.grid').masonry({
         "percentPosition": true,
         "itemSelector": ".grid-item",
