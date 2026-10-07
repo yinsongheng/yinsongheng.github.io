@@ -1,8 +1,21 @@
 @charset "utf-8";
+:root {
+    --page-sepia: #e9e1d4;
+    --surface-sepia: #fff;
+}
+
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
     padding-top: 5.0rem;
+}
+
+body.bg-light {
+    background-color: var(--page-sepia) !important;
+}
+
+.bg-white {
+    background-color: var(--surface-sepia) !important;
 }
 
 /* One-page navigation: smooth-scroll to anchors and offset for the fixed navbar
@@ -126,7 +139,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .navbar {
-    background-color: rgba(255, 255, 255, 0.6) !important;
+    background-color: rgba(255, 255, 255, 0.78) !important;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
 }
